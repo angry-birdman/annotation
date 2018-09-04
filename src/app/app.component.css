@@ -1,0 +1,9 @@
+span.label-item-char::selection {
+    background: #ffb7b7; /* WebKit/Blink Browsers */
+}
+span.label-item-char::-moz-selection {
+    background: #ffb7b7; /* Gecko Browsers */
+}
+#char-parent {
+    line-height: 1.5;
+}
