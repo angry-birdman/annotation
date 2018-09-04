@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
 
   expandSelection(selection: Selection) {
     try {
+      let self = this;
       let anchorIndex = selection.anchorNode.parentNode.attributes['char-index'].value;
       let focusIndex = selection.focusNode.parentNode.attributes['char-index'].value;
       var anchorChar = selection.anchorNode.nodeValue;
@@ -54,6 +55,9 @@ export class AppComponent implements OnInit {
         var el = document.querySelector('#char-' + _i);
         highlight.appendChild(el);
       }
+      highlight.addEventListener('click', () => {
+        self.unmark(highlight);
+      });
 
       console.log(newAnchorNode + '-' + newFocusNode);
       console.log(anchorIndex + '-' + anchorChar);
@@ -61,6 +65,10 @@ export class AppComponent implements OnInit {
     }catch(err) {
         return selection;
     }
+  }
+
+  unmark(el) {
+    el.parentNode.removeChild(el);
   }
     
 }
